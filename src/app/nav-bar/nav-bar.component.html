@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand"
+    href="#">0</a>
+  <button (click)="isCollapsed = !isCollapsed"
+    [attr.aria-expanded]="!isCollapsed"
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navContent"
+    aria-controls="navContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div [ngbCollapse]="!isCollapsed" class="collapse navbar-collapse"
+    id="navContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link"
+          routerLink="/shopping-cart">Shopping Cart</a>
+      </li>
+      <li class="nav-item dropdown">
+        <div ngbDropdown
+          class="d-inline-block">
+          <a class="nav-link dropdown-toggle"
+            id="username"
+            ngbDropdownToggle>Username</a>
+          <div ngbDropdownMenu
+            aria-labelledby="Username">
+            <a class="dropdown-item">My Orders</a>
+            <a class="dropdown-item">Manage Orders</a>
+            <a class="dropdown-item">Manage Products</a>
+            <a class="dropdown-item">Log Out</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
