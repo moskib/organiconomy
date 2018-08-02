@@ -62,6 +62,10 @@ import { environment } from './../environments/environment';
         component: CheckOutComponent
       },
       {
+        path: 'my/orders',
+        component: MyOrdersComponent
+      },
+      {
         path: 'order-success',
         component: OrderSuccessComponent
       },
@@ -70,7 +74,7 @@ import { environment } from './../environments/environment';
         component: LoginComponent
       },
       {
-        path: 'adming/products',
+        path: 'admin/products',
         component: AdminProductsComponent
       },
       {
