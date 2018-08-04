@@ -23,6 +23,7 @@ import { LoginComponent } from './login/login.component';
 // Services:
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
+import { UserService } from './services/user.service';
 
 // Other:
 import { environment } from './../environments/environment';
@@ -99,7 +100,8 @@ import { environment } from './../environments/environment';
   ],
   providers: [
     AuthService,
-    AuthGuardService
+    AuthGuardService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,4 @@
+import { UserService } from './user.service';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -13,19 +14,22 @@ export class AuthService {
 
   constructor(private afAuth: AngularFireAuth,
     private route: ActivatedRoute,
-    private router: Router) {
+    private router: Router,
+    private userService: UserService) {
     this.user$ = afAuth.authState;
   }
 
   login() {
-    // get the query parameter (if not, it will rederect to home)
     let returnUrl = this.route.snapshot
       .queryParamMap.get('returnUrl') || '/';
 
-    // Notice I used signInWithPopup() instead of
-    // signInWithRedirect()
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-      .then(() => this.router.navigateByUrl(returnUrl));
+      .then(loggedInUser => {
+
+        this.userService.save(loggedInUser.user);
+
+        this.router.navigateByUrl(returnUrl)
+      });
   }
 
   logout() {
