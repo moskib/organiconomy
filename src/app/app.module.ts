@@ -24,6 +24,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { UserService } from './services/user.service';
+import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 
 // Other:
 import { environment } from './../environments/environment';
@@ -88,12 +89,12 @@ import { environment } from './../environments/environment';
       {
         path: 'admin/products',
         component: AdminProductsComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService, AdminAuthGuardService]
       },
       {
         path: 'admin/orders',
         component: AdminOrdersComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService, AdminAuthGuardService]
       }
     ])
 
@@ -101,7 +102,8 @@ import { environment } from './../environments/environment';
   providers: [
     AuthService,
     AuthGuardService,
-    UserService
+    UserService,
+    AdminAuthGuardService
   ],
   bootstrap: [AppComponent]
 })
