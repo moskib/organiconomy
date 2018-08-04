@@ -19,7 +19,10 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
+
+// Services:
 import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 // Other:
 import { environment } from './../environments/environment';
@@ -45,6 +48,7 @@ import { environment } from './../environments/environment';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     RouterModule.forRoot([
+      // Annonymous User Routes:
       {
         path: '',
         component: HomeComponent
@@ -58,34 +62,44 @@ import { environment } from './../environments/environment';
         component: ShoppingCartComponent
       },
       {
-        path: 'check-out',
-        component: CheckOutComponent
-      },
-      {
-        path: 'my/orders',
-        component: MyOrdersComponent
-      },
-      {
-        path: 'order-success',
-        component: OrderSuccessComponent
-      },
-      {
         path: 'login',
         component: LoginComponent
       },
+
+      // User Routes:
+      {
+        path: 'check-out',
+        component: CheckOutComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'my/orders',
+        component: MyOrdersComponent,
+        canActivate: [AuthGuardService]
+      },
+      {
+        path: 'order-success',
+        component: OrderSuccessComponent,
+        canActivate: [AuthGuardService]
+      },
+
+      // Admin Routes: 
       {
         path: 'admin/products',
-        component: AdminProductsComponent
+        component: AdminProductsComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'admin/orders',
-        component: AdminOrdersComponent
+        component: AdminOrdersComponent,
+        canActivate: [AuthGuardService]
       }
     ])
 
   ],
   providers: [
-    AuthService
+    AuthService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
