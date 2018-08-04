@@ -1,7 +1,7 @@
+import { Observable } from 'rxjs';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from '@angular/core';
 import * as firebase from 'firebase';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'nav-bar',
