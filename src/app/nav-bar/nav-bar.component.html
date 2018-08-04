@@ -30,7 +30,7 @@
       </ng-template>
       <li class="nav-item dropdown">
         <div ngbDropdown
-          *ngIf="user$ | async as user; else annonymousUser"
+          *ngIf="auth.user$ | async as user; else annonymousUser"
           class="d-inline-block">
           <a class="nav-link dropdown-toggle"
             id="username"
