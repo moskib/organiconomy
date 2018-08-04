@@ -1,3 +1,5 @@
+import { AppUser } from './../models/app-user';
+import { switchMap } from 'rxjs/operators';
 import { UserService } from './user.service';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -34,5 +36,10 @@ export class AuthService {
 
   logout() {
     this.afAuth.auth.signOut();
+  }
+
+  get appUser$(): Observable<AppUser> {
+    return this.user$.pipe(
+      switchMap(user => this.userService.get(user.uid).valueChanges()));
   }
 }
