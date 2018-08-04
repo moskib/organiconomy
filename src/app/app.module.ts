@@ -1,4 +1,3 @@
-import { CategoryService } from './category.service';
 // Modules:
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -7,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { FormsModule } from '@angular/forms';
 
 // Components:
 import { AppComponent } from './app.component';
@@ -26,10 +26,12 @@ import { AuthService } from './services/auth.service';
 import { AuthGuardService } from './services/auth-guard.service';
 import { UserService } from './services/user.service';
 import { AdminAuthGuardService } from './services/admin-auth-guard.service';
+import { CategoryService } from './category.service';
 
 // Other:
 import { environment } from './../environments/environment';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
+import { ProductService } from './services/product.service';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    FormsModule,
     RouterModule.forRoot([
       // Annonymous User Routes:
       {
@@ -112,7 +115,8 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     AuthGuardService,
     UserService,
     AdminAuthGuardService,
-    CategoryService
+    CategoryService,
+    ProductService
   ],
   bootstrap: [AppComponent]
 })
