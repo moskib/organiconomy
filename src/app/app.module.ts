@@ -1,3 +1,4 @@
+import { CategoryService } from './category.service';
 // Modules:
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -110,7 +111,8 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
     AuthService,
     AuthGuardService,
     UserService,
-    AdminAuthGuardService
+    AdminAuthGuardService,
+    CategoryService
   ],
   bootstrap: [AppComponent]
 })
