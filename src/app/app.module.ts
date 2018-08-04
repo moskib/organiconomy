@@ -28,6 +28,7 @@ import { AdminAuthGuardService } from './services/admin-auth-guard.service';
 
 // Other:
 import { environment } from './../environments/environment';
+import { ProductFormComponent } from './admin/product-form/product-form.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { environment } from './../environments/environment';
     MyOrdersComponent,
     AdminProductsComponent,
     AdminOrdersComponent,
-    LoginComponent
+    LoginComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
@@ -89,6 +91,11 @@ import { environment } from './../environments/environment';
       {
         path: 'admin/products',
         component: AdminProductsComponent,
+        canActivate: [AuthGuardService, AdminAuthGuardService]
+      },
+      {
+        path: 'admin/products/new',
+        component: ProductFormComponent,
         canActivate: [AuthGuardService, AdminAuthGuardService]
       },
       {
