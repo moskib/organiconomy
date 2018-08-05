@@ -19,11 +19,15 @@ export class ProductService {
         return products.map(product => ({
           key: product.key,
           value: product.payload.val()
-        }))
+        }));
       }));
   }
 
   get(productId) {
     return this.db.object('/products/' + productId).valueChanges();
+  }
+
+  update(productId, product) {
+    this.db.object('/products/' + productId).update(product);
   }
 }

@@ -11,7 +11,7 @@ export class LoginComponent {
 
   constructor(private auth: AuthService) { }
 
-  login(){
+  login() {
     this.auth.login();
   }
 }

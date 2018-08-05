@@ -22,7 +22,7 @@ export class AuthService {
   }
 
   login() {
-    let returnUrl = this.route.snapshot
+    const returnUrl = this.route.snapshot
       .queryParamMap.get('returnUrl') || '/';
 
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())

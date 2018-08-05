@@ -94,7 +94,7 @@ import { ProductService } from './services/product.service';
         canActivate: [AuthGuardService]
       },
 
-      // Admin Routes: 
+      // Admin Routes:
       {
         path: 'admin/products/new',
         component: ProductFormComponent,
