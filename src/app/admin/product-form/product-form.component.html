@@ -23,13 +23,21 @@
       </div>
       <div class="form-group">
         <label for="category">Category</label>
+
+
+
+
         <select  #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
           <option value=""></option>
-          <option *ngFor="let category of categories$ | async">
+          <option *ngFor="let category of categories$ | async" [selected]="product.category === category.name">
             {{ category.name }}
           </option>
         </select>
       </div>
+
+
+
+
       <div class="form-group">
         <label for="imageUrl">Image URL</label>
         <input #imageUrl="ngModel" [(ngModel)]="product.imageUrl" name="imageUrl" type="text" id="imageUrl" class="form-control" required url>
