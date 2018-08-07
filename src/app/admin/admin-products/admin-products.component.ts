@@ -1,6 +1,7 @@
 import { ProductService } from './../../services/product.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { AppProduct } from '../../models/app-product';
 
 @Component({
   selector: 'app-admin-products',
@@ -9,7 +10,7 @@ import { Subscription } from 'rxjs';
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
 
-  products: any[];
+  products: AppProduct[];
   filteredProducts: any[];
   subscription: Subscription;
 
