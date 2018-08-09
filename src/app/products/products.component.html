@@ -3,10 +3,14 @@
   <!-- Categories Menu -->
   <div class="col-lg-3 col-sm-12">
     <div class="list-group">
+      <a class="list-group-item list-group-item-action"
+         [class.active]="!category"
+         routerLink="/">All Categories</a>
       <a *ngFor="let c of categories$ | async"
          routerLink="/"
          [queryParams]="{ category: c.key }"
-         class="list-group-item list-group-item-action">
+         class="list-group-item list-group-item-action"
+         [class.active]="category === c.key">
         {{ c.value.name }}
       </a>
     </div>
@@ -17,7 +21,7 @@
     <div class="card-columns">
 
       <!-- Individual Card Display -->
-      <div *ngFor="let p of products$ | async"
+      <div *ngFor="let p of filteredProducts"
            class="card"
            style="width: 18rem;">
 
