@@ -74,7 +74,7 @@ import { ProductService } from './services/product.service';
       // Annonymous User Routes:
       {
         path: '',
-        component: HomeComponent
+        component: ProductsComponent
       },
       {
         path: 'products',
