@@ -1,4 +1,9 @@
 export interface AppProduct {
     key: string;
-    value: {};
+    value: {
+        title: string,
+        price: number,
+        category: string,
+        imageUrl: string
+    };
 }

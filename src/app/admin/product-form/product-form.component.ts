@@ -13,7 +13,7 @@ import { take } from 'rxjs/operators';
 export class ProductFormComponent implements OnInit {
 
   categories$;
-  product: AppProduct = {key: {}, value: {}};
+  product: AppProduct;
   id;
 
   constructor(
@@ -26,7 +26,10 @@ export class ProductFormComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id)
       this.productService.get(this.id).pipe(take(1))
-        .subscribe(p => this.product = p);
+        .subscribe(p => this.product = <AppProduct>({
+          key: this.id,
+          value: p
+        }));
   }
 
   ngOnInit() {
