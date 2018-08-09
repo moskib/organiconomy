@@ -10,33 +10,30 @@ import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
-
   subscription: Subscription;
   dataSource: MatTableDataSource<AppProduct>;
   displayedColumns = ['title', 'price', 'edit'];
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator)
+  paginator: MatPaginator;
 
-  constructor(private productService: ProductService) {
-  }
+  @ViewChild(MatSort)
+  sort: MatSort;
+
+  constructor(private productService: ProductService) {}
 
   filter(query: string) {
     this.dataSource.filter = query;
   }
 
   ngOnInit() {
-    this.subscription = this.productService.getAll()
-      .subscribe(product => {
-        this.dataSource = new MatTableDataSource(product);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-        this.dataSource.filterPredicate = (
-          data: AppProduct,
-          filter: string
-        ) => data.value.title.toLowerCase()
-          .includes(filter.toLowerCase());
-      });
+    this.subscription = this.productService.getAll().subscribe(product => {
+      this.dataSource = new MatTableDataSource(product);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.dataSource.filterPredicate = (data: AppProduct, filter: string) =>
+        data.value.title.toLowerCase().includes(filter.toLowerCase());
+    });
   }
 
   ngOnDestroy() {

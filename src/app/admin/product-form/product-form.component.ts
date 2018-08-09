@@ -11,29 +11,32 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./product-form.component.css']
 })
 export class ProductFormComponent implements OnInit {
-
   categories$;
-  product: AppProduct = <AppProduct>({ key: {}, value: {} });
+  product: AppProduct = <AppProduct>{ key: {}, value: {} };
   id;
 
   constructor(
     private router: Router,
     private categoryService: CategoryService,
     private productService: ProductService,
-    private route: ActivatedRoute) {
-  }
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-
-    this.categories$ = this.categoryService.getCategories();
+    this.categories$ = this.categoryService.getAll();
 
     this.id = this.route.snapshot.paramMap.get('id');
     if (this.id)
-      this.productService.get(this.id).pipe(take(1))
-        .subscribe(p => this.product = <AppProduct>({
-          key: this.id,
-          value: p
-        }));
+      this.productService
+        .get(this.id)
+        .pipe(take(1))
+        .subscribe(
+          p =>
+            (this.product = <AppProduct>{
+              key: this.id,
+              value: p
+            })
+        );
   }
 
   save(product) {

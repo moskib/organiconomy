@@ -12,11 +12,10 @@ export class NavBarComponent {
   appUser: AppUser;
 
   constructor(private auth: AuthService) {
-    auth.appUser$.subscribe(appUser => this.appUser = appUser);
+    auth.appUser$.subscribe(appUser => (this.appUser = appUser));
   }
 
   logout() {
     this.auth.logout();
   }
-
 }

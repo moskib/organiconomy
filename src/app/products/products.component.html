@@ -1,14 +1,39 @@
-<div class="card-columns">
-  <div *ngFor="let p of products$ | async" class="card" style="width: 18rem;">
-  
-    <!-- Card Image -->
-    <img class="card-img-top" [src]="p.value.imageUrl" alt="Card image cap">
-  
-    <!-- Card Body -->
-    <div class="card-body">
-      <h4 class="card-title">{{ p.value.title }}</h4>
-      <p class="card-text">{{ p.value.price | currency}}</p>
-      <a href="#" class="btn btn-primary">Add to Cart</a>
+<div class="row">
+
+  <!-- Categories Menu -->
+  <div class="col-lg-3 col-sm-12">
+    <div class="list-group">
+      <a *ngFor="let c of categories$ | async"
+         routerLink="/"
+         [queryParams]="{ category: c.key }"
+         class="list-group-item list-group-item-action">
+        {{ c.value.name }}
+      </a>
+    </div>
+  </div>
+  <div class="col-md-9 col-sm-auto mt-sm-4 mt-lg-0 centered">
+
+    <!-- Catalog Display -->
+    <div class="card-columns">
+
+      <!-- Individual Card Display -->
+      <div *ngFor="let p of products$ | async"
+           class="card"
+           style="width: 18rem;">
+
+        <!-- Card Image -->
+        <img class="card-img-top"
+             [src]="p.value.imageUrl"
+             alt="Card image cap">
+
+        <!-- Card Body -->
+        <div class="card-body">
+          <h4 class="card-title">{{ p.value.title }}</h4>
+          <p class="card-text">{{ p.value.price | currency}}</p>
+          <a href="#"
+             class="btn btn-primary">Add to Cart</a>
+        </div>
+      </div>
     </div>
   </div>
 </div>

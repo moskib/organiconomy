@@ -11,26 +11,26 @@ import { ActivatedRoute, Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-
   user$: Observable<firebase.User>;
 
-  constructor(private afAuth: AngularFireAuth,
+  constructor(
+    private afAuth: AngularFireAuth,
     private route: ActivatedRoute,
     private router: Router,
-    private userService: UserService) {
+    private userService: UserService
+  ) {
     this.user$ = afAuth.authState;
   }
 
   login() {
-    const returnUrl = this.route.snapshot
-      .queryParamMap.get('returnUrl') || '/';
+    const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
 
-    this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    this.afAuth.auth
+      .signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then(loggedInUser => {
-
         this.userService.save(loggedInUser.user);
 
-        this.router.navigateByUrl(returnUrl)
+        this.router.navigateByUrl(returnUrl);
       });
   }
 
@@ -41,9 +41,10 @@ export class AuthService {
   get appUser$(): Observable<AppUser> {
     return this.user$.pipe(
       switchMap(user => {
-        if (user) return this.userService.get(user.uid).valueChanges()
+        if (user) return this.userService.get(user.uid).valueChanges();
 
         return of(null);
-      }));
+      })
+    );
   }
 }

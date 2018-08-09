@@ -8,11 +8,14 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
-import { MatTableModule, MatInputModule, MatFormFieldModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import {
+  MatTableModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatPaginatorModule,
+  MatSortModule
+} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-
-
 
 // Components:
 import { AppComponent } from './app.component';
@@ -38,8 +41,6 @@ import { CategoryService } from './category.service';
 import { environment } from './../environments/environment';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { ProductService } from './services/product.service';
-
-
 
 @NgModule({
   declarations: [
@@ -128,7 +129,6 @@ import { ProductService } from './services/product.service';
         canActivate: [AuthGuardService, AdminAuthGuardService]
       }
     ])
-
   ],
   providers: [
     AuthService,
@@ -140,4 +140,4 @@ import { ProductService } from './services/product.service';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

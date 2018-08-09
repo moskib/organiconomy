@@ -7,8 +7,7 @@ import { AppUser } from '../models/app-user';
   providedIn: 'root'
 })
 export class UserService {
-
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase) {}
 
   save(user: firebase.User) {
     this.db.object('/users/' + user.uid).update({

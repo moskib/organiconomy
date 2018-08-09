@@ -1,25 +1,35 @@
 <!-- New Product Btn -->
 <p>
-  <a routerLink="/admin/products/new" class="btn btn-primary">New Product</a>
+  <a routerLink="/admin/products/new"
+     class="btn btn-primary">New Product</a>
 </p>
 
 <!-- Filter Input -->
 <p>
-  <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search">
+  <input #query
+         (keyup)="filter(query.value)"
+         type="text"
+         class="form-control"
+         placeholder="Search">
 </p>
 
 <!-- Product Table -->
-<table mat-table [dataSource]="dataSource" matSort class="table">
+<table mat-table
+       [dataSource]="dataSource"
+       matSort
+       class="table">
 
   <!-- Title Column -->
   <ng-container matColumnDef="title">
-    <th *matHeaderCellDef mat-sort-header> Title </th>
+    <th *matHeaderCellDef
+        mat-sort-header> Title </th>
     <td *matCellDef="let product"> {{product.value.title}} </td>
   </ng-container>
 
   <!-- Price Column -->
   <ng-container matColumnDef="price">
-    <th *matHeaderCellDef mat-sort-header>Price</th>
+    <th *matHeaderCellDef
+        mat-sort-header>Price</th>
     <td *matCellDef="let product"> {{product.value.price | currency}} </td>
   </ng-container>
 
@@ -31,8 +41,10 @@
     </td>
   </ng-container>
 
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  <tr mat-header-row
+      *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row
+      *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
 
 <!-- Paginator -->
