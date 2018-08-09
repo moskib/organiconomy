@@ -1,7 +1,8 @@
 import { ProductService } from './../../services/product.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AppProduct } from '../../models/app-product';
+import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 
 @Component({
   selector: 'app-admin-products',
@@ -10,22 +11,28 @@ import { AppProduct } from '../../models/app-product';
 })
 export class AdminProductsComponent implements OnInit, OnDestroy {
 
-  products: AppProduct[];
   filteredProducts: any[];
   subscription: Subscription;
+  dataSource: MatTableDataSource<AppProduct>;
+  displayedColumns = ['title', 'price', 'edit'];
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private productService: ProductService) {
-    this.subscription = this.productService.getAll()
-      .subscribe(products => this.filteredProducts = this.products = products);
   }
 
   filter(query: string) {
-    this.filteredProducts = (query) ?
-      this.products.filter(p => p.value.title.toLowerCase().includes(query.toLowerCase())) :
-      this.products;
+    this.dataSource.filter = query;
   }
 
   ngOnInit() {
+    this.subscription = this.productService.getAll().subscribe(product => {
+      this.dataSource = new MatTableDataSource(product);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.dataSource.filterPredicate = (data: AppProduct, filter: string) => data.value.title.toLowerCase().includes(filter.toLowerCase());
+    });
   }
 
   ngOnDestroy() {

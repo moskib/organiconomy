@@ -8,6 +8,10 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
+import { MatTableModule, MatInputModule, MatFormFieldModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 
 // Components:
@@ -35,6 +39,8 @@ import { environment } from './../environments/environment';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { ProductService } from './services/product.service';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +63,13 @@ import { ProductService } from './services/product.service';
     NgbModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
+    MatTableModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
+    MatSortModule,
     AngularFireAuthModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       // Annonymous User Routes:
       {
