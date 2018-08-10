@@ -52,7 +52,8 @@
                 required>
           <option value=""></option>
           <option *ngFor="let category of categories$ | async"
-                  [selected]="product.value.category === category.value.name.toLowerCase()">
+                  [selected]="product.value.category === category.key"
+                  [value]="category.key">
             {{ category.value.name }}
           </option>
         </select>
