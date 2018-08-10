@@ -9,24 +9,12 @@
   <div class="col-md-9 col-sm-auto mt-sm-4 mt-lg-0">
     <div class="card-columns">
 
-      <!-- Individual Card Display -->
-      <div *ngFor="let p of filteredProducts"
-           class="card"
-           style="width: 18rem;">
-
-        <!-- Card Image -->
-        <img class="card-img-top"
-             [src]="p.value.imageUrl"
-             alt="Card image cap">
-
-        <!-- Card Body -->
-        <div class="card-body">
-          <h4 class="card-title">{{ p.value.title }}</h4>
-          <p class="card-text">{{ p.value.price | currency}}</p>
-          <a href="#"
-             class="btn btn-primary">Add to Cart</a>
-        </div>
+      <div *ngFor="let p of filteredProducts">
+        <!-- Individual Card Display -->
+        <app-product-card [product]="p"></app-product-card>
       </div>
+
+
     </div>
   </div>
 </div>
