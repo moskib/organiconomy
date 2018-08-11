@@ -10,7 +10,6 @@ import { Component, Input } from '@angular/core';
 export class ProductCardComponent {
   @Input('product')
   product: AppProduct;
-
   // tslint:disable-next-line:no-input-rename
   @Input('show-actions')
   showActions = true;
@@ -20,8 +19,12 @@ export class ProductCardComponent {
 
   constructor(private cartService: ShoppingCartService) {}
 
-  addToCart(product: AppProduct) {
-    this.cartService.addToCart(product);
+  addToCart() {
+    this.cartService.addToCart(this.product);
+  }
+
+  removeFromCart() {
+    this.cartService.removeFromCart(this.product);
   }
 
   getQuantity() {
