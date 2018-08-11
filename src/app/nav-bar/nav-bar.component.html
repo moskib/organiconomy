@@ -19,7 +19,12 @@
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link"
-           routerLink="/shopping-cart">Shopping Cart</a>
+           routerLink="/shopping-cart">
+          Shopping Cart
+          <span class="badge badge-pill badge-warning">
+            {{ shoppingCartItemCount }}
+          </span>
+        </a>
       </li>
       <ng-template #annonymousUser>
         <li class="nav-item">
