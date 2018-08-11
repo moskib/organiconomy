@@ -5,3 +5,19 @@
 .mat-spinner circle {
   stroke: #2a79ff !important;
 }
+
+.loading {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  margin: auto;
+}
+
+@media (max-width: 400px) {
+  .loading {
+    position: absolute;
+    top: 45%;
+    left: 35%;
+    margin: auto;
+  }
+}
