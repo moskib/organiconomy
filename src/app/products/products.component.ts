@@ -13,6 +13,7 @@ export class ProductsComponent {
   products: AppProduct[] = [];
   filteredProducts: AppProduct[] = [];
   category: string;
+  progressSpinner = true;
 
   constructor(route: ActivatedRoute, productService: ProductService) {
     productService
@@ -28,6 +29,7 @@ export class ProductsComponent {
         this.filteredProducts = this.category
           ? this.products.filter(p => p.value.category === this.category)
           : this.products;
+        this.progressSpinner = false;
       });
   }
 }

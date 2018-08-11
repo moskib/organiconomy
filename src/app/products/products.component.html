@@ -1,5 +1,5 @@
-<div class="row">
-
+<div class="row"
+     *ngIf="!progressSpinner">
   <!-- Categories Menu -->
   <div class="col-lg-3 ">
     <app-product-filter [category]="category"></app-product-filter>
@@ -13,8 +13,9 @@
         <!-- Individual Card Display -->
         <app-product-card [product]="p"></app-product-card>
       </div>
-
-
     </div>
   </div>
 </div>
+
+<mat-spinner class="mx-auto"
+             *ngIf="progressSpinner"></mat-spinner>

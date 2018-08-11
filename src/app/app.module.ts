@@ -13,7 +13,8 @@ import {
   MatInputModule,
   MatFormFieldModule,
   MatPaginatorModule,
-  MatSortModule
+  MatSortModule,
+  MatProgressSpinnerModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -70,6 +71,7 @@ import { ProductCardComponent } from './product-card/product-card.component';
     AngularFireDatabaseModule,
     MatTableModule,
     MatInputModule,
+    MatProgressSpinnerModule,
     MatFormFieldModule,
     MatPaginatorModule,
     MatSortModule,
