@@ -18,6 +18,6 @@ export class ProductCardComponent {
   constructor(private cartService: ShoppingCartService) {}
 
   addToCart(product: AppProduct) {
-    this.addToCart(product);
+    this.cartService.addToCart(product);
   }
 }
