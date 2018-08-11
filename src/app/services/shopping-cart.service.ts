@@ -1,3 +1,4 @@
+import { ShoppingCartItem } from './../models/shopping-cart-item';
 import { ShoppingCart } from './../models/shopping-cart';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
@@ -22,7 +23,7 @@ export class ShoppingCartService {
     return this.db
       .object('/shopping-carts/' + cartId)
       .valueChanges()
-      .pipe(map(cart => new ShoppingCart(cart.items)));
+      .pipe(map((cart: ShoppingCart) => new ShoppingCart(cart.items)));
   }
 
   private getItem(cartId: string, productId: string) {
@@ -53,7 +54,7 @@ export class ShoppingCartService {
     item$
       .snapshotChanges()
       .pipe(take(1))
-      .subscribe(item => {
+      .subscribe((item: any) => {
         item$.update({
           product: product,
           quantity:
