@@ -1,4 +1,3 @@
-import { ShoppingCartItem } from './../models/shopping-cart-item';
 import { ShoppingCart } from './../models/shopping-cart';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
@@ -22,8 +21,14 @@ export class ShoppingCartService {
     const cartId = await this.getOrCreateCartId();
     return this.db
       .object('/shopping-carts/' + cartId)
-      .valueChanges()
-      .pipe(map((cart: ShoppingCart) => new ShoppingCart(cart.items)));
+      .snapshotChanges()
+      .pipe(
+        map((cart: any) => {
+          const key = cart.key;
+          const items = cart.payload.val().items;
+          return new ShoppingCart(key, items);
+        })
+      );
   }
 
   private getItem(cartId: string, productId: string) {

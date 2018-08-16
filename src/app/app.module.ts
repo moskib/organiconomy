@@ -45,6 +45,7 @@ import { ShoppingCartService } from './services/shopping-cart.service';
 
 // Other:
 import { environment } from './../environments/environment';
+import { ProductQuantityComponent } from './product-quantity/product-quantity.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { environment } from './../environments/environment';
     LoginComponent,
     ProductFormComponent,
     ProductFilterComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    ProductQuantityComponent
   ],
   imports: [
     BrowserModule,
