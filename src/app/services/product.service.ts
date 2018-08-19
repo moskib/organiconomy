@@ -19,13 +19,16 @@ export class ProductService {
       .snapshotChanges()
       .pipe(
         map(products => {
-          return products.map(
-            product =>
-              <AppProduct>{
-                key: product.key,
-                value: product.payload.val()
-              }
-          );
+          return products.map((product: any) => {
+            const payLoad = product.payload.val();
+            return {
+              key: product.key,
+              title: payLoad.title,
+              imageUrl: payLoad.imageUrl,
+              price: payLoad.price,
+              category: payLoad.category
+            };
+          });
         })
       );
   }

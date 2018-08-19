@@ -35,7 +35,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
       .subscribe(params => {
         this.category = params.get('category');
         this.filteredProducts = this.category
-          ? this.products.filter(p => p.value.category === this.category)
+          ? this.products.filter(p => p.category === this.category)
           : this.products;
         this.progressSpinner = false;
       });

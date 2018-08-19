@@ -23,14 +23,14 @@
   <ng-container matColumnDef="title">
     <th *matHeaderCellDef
         mat-sort-header> Title </th>
-    <td *matCellDef="let product"> {{product.value.title}} </td>
+    <td *matCellDef="let product"> {{product.title}} </td>
   </ng-container>
 
   <!-- Price Column -->
   <ng-container matColumnDef="price">
     <th *matHeaderCellDef
         mat-sort-header>Price</th>
-    <td *matCellDef="let product"> {{product.value.price | currency}} </td>
+    <td *matCellDef="let product"> {{product.price | currency}} </td>
   </ng-container>
 
   <!-- Edit Column -->

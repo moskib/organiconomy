@@ -12,7 +12,7 @@ import { take } from 'rxjs/operators';
 })
 export class ProductFormComponent implements OnInit {
   categories$;
-  product: AppProduct = <AppProduct>{ key: {}, value: {} };
+  product: AppProduct = <AppProduct>{};
   id;
 
   constructor(
@@ -31,10 +31,13 @@ export class ProductFormComponent implements OnInit {
         .get(this.id)
         .pipe(take(1))
         .subscribe(
-          p =>
+          (p: any) =>
             (this.product = <AppProduct>{
               key: this.id,
-              value: p
+              title: p.title,
+              price: p.price,
+              imageUrl: p.imageUrl,
+              category: p.category
             })
         );
   }

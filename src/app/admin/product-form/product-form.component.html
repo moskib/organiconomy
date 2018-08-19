@@ -6,7 +6,7 @@
       <div class="form-group">
         <label for="title">Title</label>
         <input #title="ngModel"
-               [(ngModel)]="product.value.title"
+               [(ngModel)]="product.title"
                name="title"
                type="text"
                id="title"
@@ -26,7 +26,7 @@
             <span class="input-group-text">$</span>
           </div>
           <input #price="ngModel"
-                 [(ngModel)]="product.value.price"
+                 [(ngModel)]="product.price"
                  name="price"
                  type="number"
                  id="price"
@@ -45,16 +45,16 @@
       <div class="form-group">
         <label for="category">Category</label>
         <select #category="ngModel"
-                [(ngModel)]="product.value.category"
+                [(ngModel)]="product.category"
                 name="category"
                 id="category"
                 class="form-control"
                 required>
           <option value=""></option>
           <option *ngFor="let category of categories$ | async"
-                  [selected]="product.value.category === category.key"
+                  [selected]="product.category === category.key"
                   [value]="category.key">
-            {{ category.value.name }}
+            {{ category.name }}
           </option>
         </select>
       </div>
@@ -63,7 +63,7 @@
       <div class="form-group">
         <label for="imageUrl">Image URL</label>
         <input #imageUrl="ngModel"
-               [(ngModel)]="product.value.imageUrl"
+               [(ngModel)]="product.imageUrl"
                name="imageUrl"
                type="text"
                id="imageUrl"

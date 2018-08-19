@@ -61,11 +61,9 @@ export class ShoppingCartService {
       .pipe(take(1))
       .subscribe((item: any) => {
         item$.update({
-          value: {
-            title: product.value.title,
-            imageUrl: product.value.imageUrl,
-            price: product.value.price
-          },
+          title: product.title,
+          imageUrl: product.imageUrl,
+          price: product.price,
 
           quantity:
             (item.payload.exists() ? item.payload.val().quantity : 0) + change
