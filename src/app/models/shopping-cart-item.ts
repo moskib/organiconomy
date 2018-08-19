@@ -2,10 +2,14 @@ import { AppProduct } from './app-product';
 
 export class ShoppingCartItem {
   key: string;
-  product: AppProduct;
+  value: {
+    title: string;
+    price: number;
+    imageUrl: string;
+  };
   quantity: number;
 
   get totalPrice() {
-    return this.product.value.price * this.quantity;
+    return this.value.price * this.quantity;
   }
 }

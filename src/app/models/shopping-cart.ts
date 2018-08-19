@@ -26,6 +26,7 @@ export class ShoppingCart {
 
   get totalPrice() {
     let sum = 0;
+    // tslint:disable-next-line:curly
     for (const productId in this.items) {
       sum += this.items[productId].totalPrice;
     }
