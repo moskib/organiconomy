@@ -7,7 +7,8 @@
 
   <!-- Catalog Display -->
   <div class="col-md-9 mt-sm-4 mt-lg-0 mx-auto">
-    <div class="card-columns">
+    <div class="card-columns"
+         *ngIf="cart$ | async as cart">
 
       <div *ngFor="let p of filteredProducts">
         <!-- Individual Card Display -->
