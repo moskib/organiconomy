@@ -65,14 +65,17 @@ export class ShoppingCartService {
       .snapshotChanges()
       .pipe(take(1))
       .subscribe((item: any) => {
-        item$.update({
-          title: product.title,
-          imageUrl: product.imageUrl,
-          price: product.price,
+        const quantity =
+          (item.payload.exists() ? item.payload.val().quantity : 0) + change;
 
-          quantity:
-            (item.payload.exists() ? item.payload.val().quantity : 0) + change
-        });
+        if (quantity === 0) item$.remove();
+        else
+          item$.update({
+            title: product.title,
+            imageUrl: product.imageUrl,
+            price: product.price,
+            quantity: quantity
+          });
       });
   }
 }
