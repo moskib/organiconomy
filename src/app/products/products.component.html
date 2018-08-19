@@ -1,5 +1,5 @@
-<div class="row">
-
+<div class="row"
+     *ngIf="!progressSpinner">
   <!-- Categories Menu -->
   <div class="col-lg-3 ">
     <app-product-filter [category]="category"></app-product-filter>
@@ -7,14 +7,18 @@
 
   <!-- Catalog Display -->
   <div class="col-md-9 mt-sm-4 mt-lg-0 mx-auto">
-    <div class="card-columns">
+    <div class="card-columns"
+         *ngIf="cart$ | async as cart">
 
       <div *ngFor="let p of filteredProducts">
         <!-- Individual Card Display -->
-        <app-product-card [product]="p"></app-product-card>
+        <app-product-card [product]="p"
+                          [shoppingCart]="cart"></app-product-card>
       </div>
-
-
     </div>
   </div>
+</div>
+<div class="loading">
+  <mat-spinner *ngIf="progressSpinner"></mat-spinner>
+
 </div>

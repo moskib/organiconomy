@@ -8,19 +8,15 @@ import { map } from 'rxjs/operators';
 export class CategoryService {
   constructor(private db: AngularFireDatabase) {}
 
-  // getAll() {
-  //   return this.db.list('/categories', query => query.orderByChild('name')).valueChanges();
-  // }
-
   getAll() {
     return this.db
       .list('/categories', query => query.orderByChild('name'))
       .snapshotChanges()
       .pipe(
         map(categories =>
-          categories.map(category => ({
+          categories.map((category: any) => ({
             key: category.key,
-            value: category.payload.val()
+            name: category.payload.val().name
           }))
         )
       );

@@ -32,7 +32,7 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.dataSource.filterPredicate = (data: AppProduct, filter: string) =>
-        data.value.title.toLowerCase().includes(filter.toLowerCase());
+        data.title.toLowerCase().includes(filter.toLowerCase());
     });
   }
 

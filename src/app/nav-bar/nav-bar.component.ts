@@ -1,6 +1,9 @@
+import { ShoppingCart } from './../models/shopping-cart';
 import { AppUser } from './../models/app-user';
 import { AuthService } from './../services/auth.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ShoppingCartService } from '../services/shopping-cart.service';
+import { Observable } from '../../../node_modules/rxjs';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -8,12 +11,19 @@ import { Component } from '@angular/core';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css']
 })
-export class NavBarComponent {
+export class NavBarComponent implements OnInit {
   public isCollapsed = false;
   appUser: AppUser;
+  cart$: Observable<ShoppingCart>;
 
-  constructor(private auth: AuthService) {
-    auth.appUser$.subscribe(appUser => (this.appUser = appUser));
+  constructor(
+    private auth: AuthService,
+    private shoppingCartService: ShoppingCartService
+  ) {}
+
+  async ngOnInit() {
+    this.auth.appUser$.subscribe(appUser => (this.appUser = appUser));
+    this.cart$ = await this.shoppingCartService.getCart();
   }
 
   logout() {
