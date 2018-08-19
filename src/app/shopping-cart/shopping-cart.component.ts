@@ -17,4 +17,8 @@ export class ShoppingCartComponent implements OnInit {
   test(any: any) {
     console.log(any);
   }
+
+  clearCart() {
+    this.shoppingCartService.clearCart();
+  }
 }
