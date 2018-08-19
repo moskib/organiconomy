@@ -12,10 +12,7 @@ export class ShoppingCart {
 
     for (const productId in itemsMap) {
       const item = itemsMap[productId];
-      const x = new ShoppingCartItem();
-      Object.assign(x, item);
-      x.key = productId;
-      this.items.push(x);
+      this.items.push(new ShoppingCartItem({ ...item, key: productId }));
     }
   }
   getQuantity(product: AppProduct) {
