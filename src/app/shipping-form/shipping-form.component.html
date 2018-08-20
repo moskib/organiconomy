@@ -6,6 +6,7 @@
            [(ngModel)]="shipping.name"
            name="name"
            type="text"
+           id="name"
            class="form-control"
            placeholder="Enter your name"
            required>
@@ -19,59 +20,61 @@
 
   <!-- Address Line 1 Form Group -->
   <div class="form-group">
-    <label for="addressLine1">
-      Address Line 1
-    </label>
+    <label for="addressLine1">Address Line 1</label>
     <input #addressLine1="ngModel"
            [(ngModel)]="shipping.addressLine1"
            name="addressLine1"
-           placeholder="Enter Address Line 1"
+           id="addressLine1"
            type="text"
            class="form-control"
-           requried>
-    <div *ngIf="addressLine1.touched && addressLine1.invalid">
+           placeholder="Enter your address"
+           required>
+    <div class="alert alert-danger mt-1"
+         *ngIf="addressLine1.touched && addressLine1.invalid">
       <div *ngIf="addressLine1?.errors.required">
-        Address Line 1 is required
+        Address line is required
       </div>
     </div>
   </div>
 
-  <!-- Address Line 1 Form Group -->
+  <!-- Address Line 2 Form Group -->
   <div class="form-group">
-    <label for="addressLine2">
-      Address Line 2
-    </label>
+    <label for="addressLine2">Address Line 2</label>
     <input #addressLine2="ngModel"
            [(ngModel)]="shipping.addressLine2"
            name="addressLine2"
-           placeholder="Enter Address Line 2"
+           id="addressLine2"
            type="text"
-           class="form-control">
-    <div *ngIf="addressLine2.touched && addressLine2.invalid">
+           class="form-control"
+           placeholder="Enter your address"
+           required>
+    <div class="alert alert-danger mt-1"
+         *ngIf="addressLine2.touched && addressLine2.invalid">
       <div *ngIf="addressLine2?.errors.required">
-        Address Line 1 is required
+        Address line is required
       </div>
     </div>
   </div>
 
   <!-- City Form Group -->
   <div class="form-group">
-    <label for="city">
-      City
-    </label>
+    <label for="city">City</label>
     <input #city="ngModel"
            [(ngModel)]="shipping.city"
            name="city"
-           placeholder="Enter City"
+           id="city"
            type="text"
-           class="form-control">
-    <div *ngIf="city.touched && city.invalid">
+           class="form-control"
+           placeholder="Enter your address"
+           required>
+    <div class="alert alert-danger mt-1"
+         *ngIf="city.touched && city.invalid">
       <div *ngIf="city?.errors.required">
         City is required
       </div>
     </div>
   </div>
-  <button [disabled]="!f.invalid"
+  <button [disabled]="f.invalid"
           class="btn btn-primary"
           (click)="placeOrder()">
     Place Order
