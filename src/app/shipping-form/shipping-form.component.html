@@ -71,7 +71,8 @@
       </div>
     </div>
   </div>
-  <button class="btn btn-primary"
+  <button [disabled]="!f.invalid"
+          class="btn btn-primary"
           (click)="placeOrder()">
     Place Order
   </button>
