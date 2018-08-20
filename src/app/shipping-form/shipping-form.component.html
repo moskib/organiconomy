@@ -1,0 +1,78 @@
+<form #f="ngForm">
+  <!-- Name Form Group -->
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input #name="ngModel"
+           [(ngModel)]="shipping.name"
+           name="name"
+           type="text"
+           class="form-control"
+           placeholder="Enter your name"
+           required>
+    <div class="alert alert-danger mt-1"
+         *ngIf="name.touched && name.invalid">
+      <div *ngIf="name?.errors.required">
+        Name is required
+      </div>
+    </div>
+  </div>
+
+  <!-- Address Line 1 Form Group -->
+  <div class="form-group">
+    <label for="addressLine1">
+      Address Line 1
+    </label>
+    <input #addressLine1="ngModel"
+           [(ngModel)]="shipping.addressLine1"
+           name="addressLine1"
+           placeholder="Enter Address Line 1"
+           type="text"
+           class="form-control"
+           requried>
+    <div *ngIf="addressLine1.touched && addressLine1.invalid">
+      <div *ngIf="addressLine1?.errors.required">
+        Address Line 1 is required
+      </div>
+    </div>
+  </div>
+
+  <!-- Address Line 1 Form Group -->
+  <div class="form-group">
+    <label for="addressLine2">
+      Address Line 2
+    </label>
+    <input #addressLine2="ngModel"
+           [(ngModel)]="shipping.addressLine2"
+           name="addressLine2"
+           placeholder="Enter Address Line 2"
+           type="text"
+           class="form-control">
+    <div *ngIf="addressLine2.touched && addressLine2.invalid">
+      <div *ngIf="addressLine2?.errors.required">
+        Address Line 1 is required
+      </div>
+    </div>
+  </div>
+
+  <!-- City Form Group -->
+  <div class="form-group">
+    <label for="city">
+      City
+    </label>
+    <input #city="ngModel"
+           [(ngModel)]="shipping.city"
+           name="city"
+           placeholder="Enter City"
+           type="text"
+           class="form-control">
+    <div *ngIf="city.touched && city.invalid">
+      <div *ngIf="city?.errors.required">
+        City is required
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary"
+          (click)="placeOrder()">
+    Place Order
+  </button>
+</form>
