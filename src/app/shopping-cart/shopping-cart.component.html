@@ -1,6 +1,6 @@
 <h1>Shopping Cart</h1>
 <div class="row col-10"
-     *ngIf="cart$ | async as cart">
+     *ngIf="cart$ | async as cart; else loading">
   <p>
     You have {{ cart.totalItemsCount }} items in your shopping cart
     <button *ngIf="cart.items.length"
@@ -49,3 +49,8 @@
      routerLink="/check-out"
      class="btn btn-primary">Check Out</a>
 </div>
+<ng-template #loading>
+  <div class="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

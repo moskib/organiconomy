@@ -1,18 +1,22 @@
 <h1>
   Orders
 </h1>
-
-<table class="table mt-4"
-       *ngFor="let order of orders$ | async">
-  <thead>
-    <th>Customer</th>
-    <th>Date</th>
-    <th></th>
-  </thead>
-  <tbody>
-    <td class="list-item">{{ order.shipping.name }}</td>
-    <td class="list-item">{{ order.datePlaced | date }}</td>
-    <td class="list-item"><a href="#"
-         class="btn btn-link">View</a></td>
-  </tbody>
-</table>
+<div *ngIf="(orders$ | async)?.length > 0 && (orders$ | async) as orders; else noOrders">
+  <table class="table mt-4"
+         *ngFor="let order of orders">
+    <thead>
+      <th>Customer</th>
+      <th>Date</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <td class="list-item">{{ order.shipping.name }}</td>
+      <td class="list-item">{{ order.datePlaced | date }}</td>
+      <td class="list-item"><a href="#"
+           class="btn btn-link">View</a></td>
+    </tbody>
+  </table>
+</div>
+<ng-template #noOrders>
+  You don't have any orders
+</ng-template>
