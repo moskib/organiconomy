@@ -1,4 +1,4 @@
-import { AppProduct } from './../../models/app-product';
+import { AppProduct } from 'shared/models/app-product';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CategoryService } from './../../category.service';
 import { Component, OnInit } from '@angular/core';

@@ -1,4 +1,4 @@
-import { AppUser } from './../models/app-user';
+import { AppUser } from 'shared/models/app-user';
 import { switchMap } from 'rxjs/operators';
 import { UserService } from './user.service';
 import { Observable, of } from 'rxjs';
