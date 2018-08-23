@@ -32,6 +32,13 @@ export class OrderService {
       .pipe(map(orders => orders.map((order: any) => this.orderMapper(order))));
   }
 
+  getOrderById(orderId: string) {
+    return this.db
+      .object('/orders/' + orderId)
+      .snapshotChanges()
+      .pipe(map(order => this.orderMapper(order)));
+  }
+
   private orderMapper(order) {
     const payload = order.payload.val();
     return {

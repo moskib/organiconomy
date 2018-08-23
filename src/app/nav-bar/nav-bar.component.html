@@ -1,61 +1,67 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <a class="navbar-brand"
-     routerLink="/">Oraniconomy</a>
-  <button (click)="isCollapsed = !isCollapsed"
-          [attr.aria-expanded]="!isCollapsed"
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navContent"
-          aria-controls="navContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <div class="container">
 
-  <div [ngbCollapse]="!isCollapsed"
-       class="collapse navbar-collapse"
-       id="navContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <a class="nav-link"
-           routerLink="/shopping-cart">
-          Shopping Cart
-          <span class="badge badge-pill badge-warning"
-                *ngIf="cart$ | async as cart">
-            {{ cart.totalItemsCount }}
-          </span>
-        </a>
-      </li>
-      <ng-template #annonymousUser>
+    <a class="navbar-brand"
+       routerLink="/">
+      <span><i class="fa fab fa-envira"></i></span>
+      Oraniconomy
+    </a>
+    <button (click)="isCollapsed = !isCollapsed"
+            [attr.aria-expanded]="!isCollapsed"
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navContent"
+            aria-controls="navContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div [ngbCollapse]="!isCollapsed"
+         class="collapse navbar-collapse"
+         id="navContent">
+      <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a class="nav-link"
-             *ngIf="!(user$ | async)"
-             routerLink="/login">Login</a>
+             routerLink="/shopping-cart">
+            <i class="fa fas fa-shopping-cart mr-3"></i>
+            <span class="badge badge-pill badge-warning"
+                  *ngIf="cart$ | async as cart">
+              {{ cart.totalItemsCount }}
+            </span>
+          </a>
         </li>
-      </ng-template>
-      <li class="nav-item dropdown">
-        <div ngbDropdown
-             *ngIf="appUser; else annonymousUser"
-             class="d-inline-block">
-          <a class="nav-link dropdown-toggle"
-             id="username"
-             ngbDropdownToggle>{{ appUser.name}}</a>
-          <div ngbDropdownMenu
-               aria-labelledby="Username">
-            <a class="dropdown-item"
-               routerLink="my/orders">My Orders</a>
-            <ng-container *ngIf="appUser.isAdmin">
+        <ng-template #annonymousUser>
+          <li class="nav-item">
+            <a class="nav-link"
+               *ngIf="!(user$ | async)"
+               routerLink="/login">Login</a>
+          </li>
+        </ng-template>
+        <li class="nav-item dropdown">
+          <div ngbDropdown
+               *ngIf="appUser; else annonymousUser"
+               class="d-inline-block">
+            <a class="nav-link dropdown-toggle pull-left"
+               id="username"
+               ngbDropdownToggle>{{ appUser.name}}</a>
+            <div ngbDropdownMenu
+                 aria-labelledby="Username">
               <a class="dropdown-item"
-                 routerLink="admin/orders">Manage Orders</a>
+                 routerLink="my/orders">My Orders</a>
+              <ng-container *ngIf="appUser.isAdmin">
+                <a class="dropdown-item"
+                   routerLink="admin/orders">Manage Orders</a>
+                <a class="dropdown-item"
+                   routerLink="admin/products">Manage Products</a>
+              </ng-container>
               <a class="dropdown-item"
-                 routerLink="admin/products">Manage Products</a>
-            </ng-container>
-            <a class="dropdown-item"
-               (click)="logout()">Log Out</a>
+                 (click)="logout()">Log Out</a>
+            </div>
           </div>
-        </div>
-      </li>
-    </ul>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

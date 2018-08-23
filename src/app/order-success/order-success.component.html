@@ -1,3 +1,56 @@
-<p>
-  order-success works!
-</p>
+<h1 class="display-3 text-center">Thank you</h1>
+<hr>
+<p class="text-center text-secondary display-6">Here are your details:</p>
+
+<div class="row mt-5"
+     *ngIf="(order$ | async) as order else loading">
+  <!-- Shipping Details: -->
+  <div class="col-md-6 mx-auto">
+    <h6 class="h6 text-center">Shipping:</h6>
+    <table class="table">
+      <tr>
+        <th>Name:</th>
+        <td class="text-right">{{ order.shipping.name }}</td>
+      </tr>
+      <tr>
+        <th>Address Line 1:</th>
+        <td class="text-right">{{ order.shipping.addressLine1 }}</td>
+      </tr>
+      <tr>
+        <th>Address Line 2:</th>
+        <td class="text-right">{{ order.shipping.AddressLine2 }}</td>
+      </tr>
+      <tr>
+        <th>City:</th>
+        <td class="text-right">{{ order.shipping.city }}</td>
+      </tr>
+    </table>
+    <!-- Order Details: -->
+    <h6 class="h6 text-center mt-5">Order:</h6>
+    <table class="table">
+      <thead>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </thead>
+      <tbody *ngFor="let item of order.items">
+        <tr>
+          <td>{{item.product.title}}</td>
+          <td>{{item.quantity }}</td>
+          <td>{{ item.product.price | currency }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <tfoot>
+      <tr>
+        <th>Total:</th>
+        <td></td>
+      </tr>
+    </tfoot>
+  </div>
+</div>
+<ng-template #loading>
+  <div class="loading">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

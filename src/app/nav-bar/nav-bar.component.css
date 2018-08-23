@@ -1,3 +1,7 @@
 a {
   cursor: pointer;
 }
+
+.navbar-brand {
+  color: #a1ba30;
+}

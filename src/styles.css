@@ -1,9 +1,10 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~font-awesome/css/font-awesome.css';
 
 .mat-progress-spinner circle,
 .mat-spinner circle {
-  stroke: #2a79ff !important;
+  stroke: #a1ba30 !important;
 }
 
 .loading {
