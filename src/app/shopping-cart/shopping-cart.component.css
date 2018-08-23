@@ -4,3 +4,9 @@
   border-radius: 100%;
   background-size: cover;
 }
+
+.btn-o {
+  color: #fff;
+  background-color: #a1ba30;
+  border-color: #a1ba30;
+}
