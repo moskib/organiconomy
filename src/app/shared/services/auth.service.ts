@@ -1,6 +1,6 @@
 import { AppUser } from 'shared/models/app-user';
 import { switchMap } from 'rxjs/operators';
-import { UserService } from './user.service';
+import { UserService } from 'shared/services/user.service';
 import { Observable, of } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
