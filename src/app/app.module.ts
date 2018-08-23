@@ -1,4 +1,3 @@
-import { SharedModule } from './shared/shared.module';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
@@ -20,9 +19,11 @@ import { CustomFormsModule } from 'ng2-validation';
 import { AuthGuardService } from 'shared/services/auth-guard.service';
 
 import { environment } from './../environments/environment';
+import { AdminModule } from './admin/admin.module';
 import { AdminOrdersComponent } from './admin/components/admin-orders/admin-orders.component';
 import { AdminProductsComponent } from './admin/components/admin-products/admin-products.component';
 import { ProductFormComponent } from './admin/components/product-form/product-form.component';
+import { AdminAuthGuardService } from './admin/services/admin-auth-guard.service';
 import { AppComponent } from './app.component';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { HomeComponent } from './home/home.component';
@@ -32,7 +33,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 import { ProductsComponent } from './products/products.component';
-import { AdminAuthGuardService } from './admin/services/admin-auth-guard.service';
+import { SharedModule } from './shared/shared.module';
 import { ShippingFormComponent } from './shipping-form/shipping-form.component';
 import { ShoppingCartSummaryComponent } from './shopping-cart-summary/shopping-cart-summary.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
@@ -47,28 +48,21 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     CheckOutComponent,
     OrderSuccessComponent,
     MyOrdersComponent,
-    AdminProductsComponent,
-    AdminOrdersComponent,
     LoginComponent,
-    ProductFormComponent,
     ProductFilterComponent,
     ShoppingCartSummaryComponent,
     ShippingFormComponent
   ],
   imports: [
     BrowserModule,
+    AdminModule,
     SharedModule,
     FormsModule,
     CustomFormsModule,
     NgbModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    MatTableModule,
-    MatInputModule,
     MatProgressSpinnerModule,
-    MatFormFieldModule,
-    MatPaginatorModule,
-    MatSortModule,
     AngularFireAuthModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
@@ -130,7 +124,7 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
       }
     ])
   ],
-  providers: [AdminAuthGuardService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
