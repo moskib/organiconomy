@@ -2,14 +2,13 @@
   Orders
 </h1>
 <div *ngIf="(orders$ | async)?.length > 0 && (orders$ | async) as orders; else noOrders">
-  <table class="table mt-4"
-         *ngFor="let order of orders">
+  <table class="table mt-4">
     <thead>
       <th>Customer</th>
       <th>Date</th>
       <th></th>
     </thead>
-    <tbody>
+    <tbody *ngFor="let order of orders">
       <td class="list-item">{{ order.shipping.name }}</td>
       <td class="list-item">{{ order.datePlaced | date }}</td>
       <td class="list-item"><a href="#"
