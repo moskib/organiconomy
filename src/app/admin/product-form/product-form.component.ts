@@ -1,6 +1,6 @@
 import { AppProduct } from 'shared/models/app-product';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CategoryService } from './../../category.service';
+import { CategoryService } from 'shared/services/category.service';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'shared/services/product.service';
 import { take } from 'rxjs/operators';
